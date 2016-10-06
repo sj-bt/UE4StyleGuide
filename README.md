@@ -1,7 +1,7 @@
 # UE4 Style Guide
 ### Agile Perception Edition
 
-*A mostly reasonable approach to Unreal Engine 4 project style and organization*
+*A mostly reasonable approach to Unreal Engine 4 project style and organization used by Agile Perception*
 
 ## Important Terminology
 
@@ -154,7 +154,7 @@ When naming an asset use these tables to determine the prefix and suffix to use 
 
 | Asset Type              | Prefix     | Suffix     | Notes                            |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
-| Level / Map             |            |            | [Should be in a folder called Maps.](#2.3) |
+| Level / Map             |            |            | [Should be in a folder called Map](#2.3) |
 | Level (Persistent)      |            | _P         |                                  |
 | Level (Audio)           |            | _Audio     |                                  |
 | Level (Lighting)        |            | _Lighting  |                                  |
@@ -319,7 +319,7 @@ Packing 4 channels of data into a texture (RGBA) is not recommended except for a
 | Media Sound Wave        | MSW_       |            |                                  |
 | Reverb Effect           | Reverb_    |            |                                  |
 | Sound Attenuation       | ATT_       |            |                                  |
-| Sound Class             |            |            | No prefix/suffix. Should be put in a folder called SoundClasses |
+| Sound Class             |            |            | No prefix/suffix. Should be put in a folder called SoundClass |
 | Sound Concurrency       |            | _SC        | Should be named after a SoundClass |
 | Sound Cue               | A_         | _Cue       |                                  |
 | Sound Mix               | Mix_       |            |                                  |
@@ -364,12 +364,12 @@ There are multiple ways to lay out the content of a UE4 project. In this style, 
         |   |-- Industrial
         |   |   |-- Ambient
         |   |   |-- Machinery
-        |   |   |-- Pipes
+        |   |   |-- Pipe
         |   |-- Nature
         |   |   |-- Ambient
         |   |   |-- Foliage
-        |   |   |-- Rocks
-        |   |   |-- Trees
+        |   |   |-- Rock
+        |   |   |-- Tree
         |   |-- Office
         |-- Characters
         |   |-- Bob
@@ -380,17 +380,17 @@ There are multiple ways to lay out the content of a UE4 project. In this style, 
         |   |-- Steve
         |   |-- <a href="#2.1.3">Zoe</a>
         |-- <a href="#2.5">Core</a>
-        |   |-- Characters
+        |   |-- Character
         |   |-- Engine
         |   |-- <a href="#2.1.2">GameModes</a>
-        |   |-- Interactables
-        |   |-- Pickups
-        |   |-- Weapons
-        |-- Effects
+        |   |-- Interactable
+        |   |-- Pickup
+        |   |-- Weapon
+        |-- Effect
         |   |-- Electrical
         |   |-- Fire
         |   |-- Weather
-        |-- <a href="#2.4">Maps</a>
+        |-- <a href="#2.4">Map</a>
         |   |-- Campaign1
         |   |-- Campaign2
         |-- <a href="#2.8">MaterialLibrary</a>
@@ -399,14 +399,14 @@ There are multiple ways to lay out the content of a UE4 project. In this style, 
         |   |-- Paint
         |   |-- Utility
         |   |-- Weathering
-        |-- Placeables
-        |   |-- Pickups
-        |-- Weapons
+        |-- Placeable
+        |   |-- Pickup
+        |-- Weapon
             |-- Common
-            |-- Pistols
+            |-- Pistol
             |   |-- DesertEagle
             |   |-- RocketPistol
-            |-- Rifles
+            |-- Rifle
 </pre>
 
 The reasons for this structure are listed in the following sub-sections.
@@ -525,11 +525,11 @@ Once the assets are ready for use, an artist simply has to move the assets into 
 
 <a name="2.4"></a>
 <a name="structure-maps"></a>
-### 2.4 All Map[<sup>*</sup>](#terms-level-map) Files Belong In A Folder Called Maps
+### 2.4 All Map[<sup>*</sup>](#terms-level-map) Files Belong In A Folder Called Map
 
-Map files are incredibly special and it is common for every project to have its own map naming system, especially if they work with sub-levels or streaming levels. No matter what system of map organization is in place for the specific project, all levels should belong in `/Content/Project/Maps`.
+Map files are incredibly special and it is common for every project to have its own map naming system, especially if they work with sub-levels or streaming levels. No matter what system of map organization is in place for the specific project, all levels should belong in `/Content/Project/Map`.
 
-Being able to tell someone to open a specific map without having to explain where it is is a great time saver and general 'quality of life' improvement. It is common for levels to be within sub-folders of `Maps`, such as `Maps/Campaign1/` or `Maps/Arenas`, but the most important thing here is that they all exist within `/Content/Project/Maps`.
+Being able to tell someone to open a specific map without having to explain where it is is a great time saver and general 'quality of life' improvement. It is common for levels to be within sub-folders of `Map`, such as `Map/Campaign1/` or `Map/Arena`, but the most important thing here is that they all exist within `/Content/Project/Map`.
 
 This also simplifies the job of cooking for engineers. Wrangling levels for a build process can be extremely frustrating if they have to dig through arbitrary folders for them. If a team's maps are all in one place, it is much harder to accidentally not cook a map in a build. It also simplifies lighting build scripts as well QA processes.
 
@@ -545,15 +545,15 @@ For example if your project requires pickups that can be placed in a level, ther
 
 <a name="2.6"></a>
 <a name="structure-assettypes"></a>
-### 2.6 Do Not Create Folders Called `Assets` or `AssetTypes`
+### 2.6 Do Not Create Folders Called `Asset` or `AssetType`
 
 <a name="2.6.1"></a>
-#### 2.6.1 Creating a folder named `Assets` is redundant.
+#### 2.6.1 Creating a folder named `Asset` is redundant.
 
 All assets are assets.
 
 <a name="2.6.2"></a>
-#### 2.6.2 Creating a folder named `Meshes`, `Textures`, or `Materials` is redundant.
+#### 2.6.2 Creating a folder named `Mesh`, `Texture`, or `Material` is redundant.
 
 All asset names are named with their asset type in mind. These folders offer only redundant information and the use of these folders can easily be replaced with the robust and easy to use filtering system the Content Browser provides.
 
