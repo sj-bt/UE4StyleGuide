@@ -114,11 +114,11 @@ Depending on how your asset variants are made, you can chain together variant na
 
 | Asset Type              | Asset Name                                                 |
 | ----------------------- | ---------------------------------------------------------- |
-| Static Mesh (01)        | S_Rock_01                                                  |
-| Static Mesh (02)        | S_Rock_02                                                  |
-| Static Mesh (03)        | S_Rock_03                                                  |
+| Static Mesh (01)        | SM_Rock_01                                                 |
+| Static Mesh (02)        | SM_Rock_02                                                 |
+| Static Mesh (03)        | SM_Rock_03                                                 |
 | Material                | M_Rock                                                     |
-| Material Instance (Snow)| MI_Rock_Snow                                               |
+| Material Instance (Snow)| M_Rock_Snow_Inst                                           |
 
 ### 1.2 Asset Name Modifiers
 
@@ -162,11 +162,11 @@ When naming an asset use these tables to determine the prefix and suffix to use 
 | Level (Gameplay)        |            | _Gameplay  |                                  |
 | Blueprint               | BP_        |            |                                  |
 | Material                | M_         |            |                                  |
-| Static Mesh             | S_ or SM_  |            | Pick only one. Prefer S_.        |
+| Static Mesh             | SM_        |            |                                  |
 | Skeletal Mesh           | SK_        |            |                                  |
 | Texture                 | T_         | _?         | See [Textures](#anc-textures)    |
 | Particle System         | PS_        |            |                                  |
-| Widget Blueprint        | WB_ or WBP_|            | Pick only one. Prefer WB_.       |
+| Widget Blueprint        | UI_        |            |                                  |
 
 <a name="anc-animations"></a>
 <a name="1.2.2"></a>
@@ -214,7 +214,7 @@ When naming an asset use these tables to determine the prefix and suffix to use 
 | Blueprint Macro Library | BPML_      |            | Do not use macro libraries if possible. |
 | Enumeration             | E          |            | No underscore.                   |
 | Structure               | F or S     |            | No underscore.                   |
-| Widget Blueprint        | WB_ or WBP_|            | Pick only one. Prefer WB_.       |
+| Widget Blueprint        | UI_        |            |                                  |
 
 <a name="anc-materials"></a>
 <a name="1.2.5"></a>
@@ -223,9 +223,9 @@ When naming an asset use these tables to determine the prefix and suffix to use 
 | Asset Type              | Prefix     | Suffix     | Notes                            |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
 | Material                | M_         |            |                                  |
-| Material (Post Process) | PP_        |            |                                  |
+| Material (Post Process) | M_         | _PP        |                                  |
 | Material Function       | MF_        |            |                                  |
-| Material Instance       | MI_        |            |                                  |
+| Material Instance       |            | _Inst      |                                  |
 | Material Parameter Collection | MPC_ |            |                                  |
 | Subsurface Profile      | SP_ or SSP_|            | Pick only one. Prefer SP_.       |
 | Physical Materials      | PM_        |            |                                  |
@@ -246,7 +246,7 @@ When naming an asset use these tables to determine the prefix and suffix to use 
 | Texture (Emissive)      | T_         | _E         |                                  |
 | Texture (Mask)          | T_         | _M         |                                  |
 | Texture (Specular)      | T_         | _S         |                                  |
-| Texture (Packed)        | T_         | _*         | See notes below about [packing](#anc-textures-packing). |
+| Texture (Packed)        | T_         | _PAK       | See notes below about [packing](#anc-textures-packing). |
 | Texture Cube            | TC_        |            |                                  |
 | Media Texture           | MT_        |            |                                  |
 | Render Target           | RT_ or RTT_|            | Pick only one. Prefer RT_.       |
@@ -256,10 +256,6 @@ When naming an asset use these tables to determine the prefix and suffix to use 
 <a name="anc-textures-packing"</a>
 <a name="1.2.6.1"></a>
 #### 1.2.6.1 Texture Packing
-It is common practice to pack multiple layers of texture data into one texture. An example of this is packing Emissive, Roughness, Ambient Occlusion together as the Red, Green, and Blue channels of a texture respectively. To determine the suffix, simply stack the given suffix letters from above together, e.g. `_ERO`.
-
-> It is generally acceptable to include an Alpha/Opacity layer in your Diffuse/Albedo's alpha channel and as this is common practice, adding `A` to the `_D` suffix is optional.
-
 Packing 4 channels of data into a texture (RGBA) is not recommended except for an Alpha/Opacity mask in the Diffuse/Albedo's alpha channel as a texture with an alpha channel occurs more overhead than one without.
 
 <a name="anc-misc"></a>
@@ -334,7 +330,7 @@ Packing 4 channels of data into a texture (RGBA) is not recommended except for a
 | Font                    | Font_      |            |                                  |
 | Slate Brush             | Brush_     |            |                                  |
 | Slate Widget Style      | Style_     |            |                                  |
-| Widget Blueprint        | WB_ or WBP_|            | Pick only one. Prefer WB_.       |
+| Widget Blueprint        | UI_        |            |                                  |
 
 <a name="anc-effects"></a>
 <a name="1.2.12"></a>
@@ -343,7 +339,7 @@ Packing 4 channels of data into a texture (RGBA) is not recommended except for a
 | Asset Type              | Prefix     | Suffix     | Notes                            |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
 | Particle System         | PS_        |            |                                  |
-| Material (Post Process) | PP_        |            |                                  |
+| Material (Post Process) | M_         | _PP        |                                  |
 
 <a name="2"></a>
 <a name="structure"></a>
